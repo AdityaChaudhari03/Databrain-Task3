@@ -1,27 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import UserList from './components/Todos';
+import Todos from './components/Todos';
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    const fetchUsers = async () => {
+    const fetchTodos = async () => {
       try {
         const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
-        setUsers(response.data);
+        console.log(response);
+        setTodos(response.data);
       } catch (error) {
-        console.error('Error fetching users:', error);
+        console.error('Error fetching todos:', error);
       }
     };
 
-    fetchUsers();
-  }, []); // Empty dependency array ensures the effect runs only once, similar to componentDidMount
+    fetchTodos();
+  }, []); 
 
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-3xl font-bold mb-8">Todo List</h1>
-      <UserList users={users} />
+      <Todos todos={todos} />
     </div>
   );
 };

@@ -1,11 +1,11 @@
 import React from 'react';
-import UserItem from './Todo';
+import Todo from './Todo';
 
-const Todos = ({ users }) => {
-  return (
+const Todos = ({ todos }) => {
+  return (  
     <div>
-      {users.map((user) => (
-        <UserItem key={user.id} user={user} />
+      {todos.map((todo) => (
+        <Todo key={todo.id} todo={todo} />
       ))}
     </div>
   );
